@@ -48,4 +48,6 @@ DATA DIICTIONARY:
 
 
 MCD PICTURE:  
+<img width="862" height="636" alt="image" src="https://github.com/user-attachments/assets/6a64a55d-e71a-4237-889e-9c53005c65c7" />
+
 
