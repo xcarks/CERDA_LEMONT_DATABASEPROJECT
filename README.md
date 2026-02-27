@@ -44,8 +44,6 @@ Each format may contain many cards.
 The objective of the database is to allow users to search for cards by name, type, subtype, color, artist, set, rarity, price, and legality in a specific format.  
 The company wants the database structure to clearly represent the entities (Card, Type, Subtype, Color, Artist, Set, Rarity, Format), their attributes, and the relationships between them, so that a conceptual, logical, and physical data model can be designed from this description."  
 
-DATA DIICTIONARY:  
-
 
 MCD PICTURE:  
 <img width="862" height="636" alt="image" src="https://github.com/user-attachments/assets/6a64a55d-e71a-4237-889e-9c53005c65c7" />
