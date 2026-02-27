@@ -1,48 +1,93 @@
 # CERDA-LEMONT-DATABASEPROJECT
 
 PROMPT USED:  
-"Act as a digital entertainment company that wants to develop a website to manage and display information about the cards of Magic: The Gathering.  
-Your task is to write a database case study description in paragraph format. The company wants to computerize the management of card information, including their characteristics, classifications, artistic information, sets, rarity, and legality in different formats.  
-The text must allow us to clearly identify entities, attributes, relationships, cardinalities, and constraints in order to build a conceptual, logical, and physical data model.  
-The final text should be written in such a way that we can clearly deduce identifiers, descriptive properties, associations between elements, participation constraints, and business rules without them being explicitly listed.   
-The result must resemble a realistic university database modeling case study."  
+You work in the field of digital entertainment data management. Your company is involved in the domain of collectible card game information services. It is a digital content company such as Scryfall, Gatherer, or other online platforms that provide structured information about trading card games.
+The company has collected structured information about cards, including identification data, pricing information, mana cost, rarity classification, artistic attribution, release sets, and legality in different competitive formats.  
+
+Take inspiration from the following website:  
+https://scryfall.com  
+
+Your company wants to apply MERISE to design an information system. You are responsible for the analysis part, i.e., gathering the company's requirements. It has called on a computer engineering student to carry out this project, and you must provide him with the necessary information so that he can then apply the following steps of database design and development himself.  
+
+First, establish the data business rules for your company in the form of a bulleted list. The rules must reflect how the company operates and manages card information, but they must not include technical database terminology. They should be written as operational rules expressed by someone who understands the business but not information system modeling.  
+
+Next, based on these rules, provide a raw data dictionary grouped in a table with the following columns:
+- Meaning of the data  
+- Type (text, numeric, date, boolean, enumeration, etc.)  
+- Size in number of characters or digits  
+The dictionary must contain between 25 and 35 data items.  
+The data dictionary must include information related to:  
+- Card identification and characteristics (identifier, name, price, converted mana cost, legendary status, token status)  
+- Classification data (type name, subtype name, color name)  
+- Artistic information (artist identifier, name, surname, full name)  
+- Expansion release information (set identifier, set name, set code, release date)  
+- Rarity information  
+- Format legality information (Standard, Modern, Vintage, Commander, Legacy, Historic, Pauper, Pioneer)  
+- For each legality attribut, it must allow the values: legal, not legal, banned, restricted  
+  
+The raw data dictionary must only describe the meaning, type, and size of each data item. It must not describe primary keys, foreign keys, relationships, or modeling assumptions.  
+
+Provide the business rules first, then the raw data dictionary table.  
+
+The final result must be suitable for a MERISE analysis phase document.  
 
 BUSINESS RULES:  
-"A digital entertainment company wants to create a website to computerize and centralize information about the cards of the game Magic: The Gathering, published by Wizards of the Coast.  
-The objective of the platform is to allow users to consult detailed information about each card, including its characteristics, classifications, artistic information, expansion sets, rarity, and legality in different competitive formats.  
-The company explains the system requirements as follows:  
-The system must manage a collection of Cards. Each card represents a unique game design and must be identified by a Card ID. For each card, the company wants to store its name, price, converted mana cost, whether it is legendary or not, and whether it is a token card.  
-Each card belongs to one or several Types (for example Creature, Instant, Sorcery, Land, etc.). A type is defined only by its name. A type may classify many cards, and a card may have multiple types.  
-In addition, a card may have zero, one, or several Subtypes (for example Wizard, Dragon, Equipment, etc.). A subtype is defined only by its name. A subtype can be associated with many cards, and a card can be associated with multiple subtypes.  
-Each card may also have one or several Colors (for example White, Blue, Black, Red, Green). A color is defined only by the name of the color. A color may correspond to many cards, and a card may have zero or multiple colors.  
-Each card is illustrated by one Artist. An artist must be identified by an Artist ID, and the system must store the artist’s name, surname, and full name. An artist may illustrate many different cards, but each card is illustrated by exactly one artist.  
-Cards are published within Sets (expansions). Each set must have the code as identifier, also you have to include its name, and release date. A set contains many cards, and a card appears in only one set. Therefore, the system must allow tracking the presence of a card in one or several set.  
-Each card has a Rarity classification(Common, Uncommon, rare, mythical). The system must record whether the card is rare or not. A rarity category can apply to many cards, and each card has one rarity per set in which it appears.  
-The company also wants the website to indicate the legality of each card in different competitive Formats. The formats to be managed are:  
-- Standard
-- Modern
-- Vintage
-- Commander
-- Legacy
-- Historic
-- Pauper
-- Pioneer 
+The company operates a digital information service dedicated to collectible card games. The following rules describe how the business manages and maintains card information:  
 
-For each format specifically, the legality must be stored as an enumerated value with one of the following states: (legal, not legal, banned, restricted).  
-A card may have a different legality status in each format. Therefore, the system must allow a card to be associated with multiple formats, and for each association, a legality status must be recorded.  
-The company specifies the following general rules:  
-- A card must have exactly one Card ID.
-- A card must have exactly one artist.
-- A card must belong to at least one type.
-- A card may have zero or more subtypes.
-- A card may have zero or more colors.
-- A card must appear in one set.
-- A set may contain many cards.
-- A card may have one legality status per format.  
+- Each card published in the game has a unique internal identifier used by the company.  
+- A card is identified by its official name as published by the game editor.  
+- A card may belong to one or more colors (for example white, blue, black, red, green, or colorless).  
+- Each card has a mana cost and a converted mana cost used to evaluate its play cost.  
+- A card may be marked as legendary or non-legendary.  
+- A card may be marked as a token or non-token.  
+- Each card has a rarity level defined by the publisher (e.g., common, uncommon, rare, mythic).  
+- A card is printed in one or more expansion sets.  
+- Each expansion set has a unique identifier, a name, a short code, and a release date.  
+- A card’s market price is tracked and updated regularly.  
+- A card is associated with one or more types (e.g., creature, sorcery, artifact).  
+- A card may have one or more subtypes (e.g., elf, wizard, equipment).  
+- The company records the artist who created the card illustration.  
+- Each artist has an internal identifier, a first name, and a last name.  
+- The company stores the full name of the artist as displayed on the card.  
+- Cards may have different legality statuses depending on the competitive format.  
+- The company tracks legality for the following formats: Standard, Modern, Vintage, Commander, Legacy, Historic, Pauper, and Pioneer.  
+- For the each legality formats, it can be marked as: legal, not legal, banned, or restricted.  
+- A card’s legality status must reflect the most recent official rules update.  
+- The company maintains historical expansion release information even after rotation from competitive formats.  
+- Pricing information is stored in a specific currency.  
+- Cards must always be associated with at least one expansion set.  
+- Cards may share the same name but are distinguished by their set and internal identifier.  
+- Classification information (type, subtype, color, rarity) follows official publisher terminology.  
+- All stored information must reflect officially published data from the game editor.  
 
-Each format may contain many cards.
-The objective of the database is to allow users to search for cards by name, type, subtype, color, artist, set, rarity, price, and legality in a specific format.  
-The company wants the database structure to clearly represent the entities (Card, Type, Subtype, Color, Artist, Set, Rarity, Format), their attributes, and the relationships between them, so that a conceptual, logical, and physical data model can be designed from this description."  
+DATA DICTIONARY:
+| Meaning of the Data              | Type                                               | Size                       |
+| -------------------------------- | -------------------------------------------------- | -------------------------- |
+| Card internal identifier         | Text                                               | 50 characters              |
+| Card official name               | Text                                               | 50 characters              |
+| Card converted mana cost         | Numeric (integrer)                                 | 32 digits                  |
+| Card market price                | Numeric (decimal)                                  | 11 digits (2 decimals)     |
+| Legendary status indicator       | Boolean                                            | 1 character                |
+| Token status indicator           | Boolean                                            | 1 character                |
+| Type name                        | Text                                               | 50 characters              |
+| Subtype name                     | Text                                               | 50 characters              |
+| Color name                       | Text                                               | 20 characters              |
+| Rarity name                      | Enumeration (common, uncommon, rare, mythic)       | 10 characters              |
+| Artist identifier                | Text                                               | 36 characters              |
+| Artist first name                | Text                                               | 80 characters              |
+| Artist last name                 | Text                                               | 80 characters              |
+| Artist full name                 | Text                                               | 160 characters             |
+| Expansion set name               | Text                                               | 150 characters             |
+| Expansion set code               | Text                                               | 10 characters              |
+| Expansion release date           | Date                                               | 10 characters (YYYY-MM-DD) |
+| Standard format legality status  | Enumeration (legal, not legal, banned, restricted) | 15 characters              |
+| Modern format legality status    | Enumeration                                        | 15 characters              |
+| Vintage format legality status   | Enumeration                                        | 15 characters              |
+| Commander format legality status | Enumeration                                        | 15 characters              |
+| Legacy format legality status    | Enumeration                                        | 15 characters              |
+| Historic format legality status  | Enumeration                                        | 15 characters              |
+| Pauper format legality status    | Enumeration                                        | 15 characters              |
+| Pioneer format legality status   | Enumeration                                        | 15 characters              |
 
 
 MCD PICTURE:  
